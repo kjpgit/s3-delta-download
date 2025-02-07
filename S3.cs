@@ -38,6 +38,9 @@ public class S3Util
             return;
         }
 
+
+        Console.WriteLine("Downloading: " + key);
+
         var request = new GetObjectRequest {
             BucketName = _bucketName,
             Key = key,
