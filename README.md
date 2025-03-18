@@ -8,14 +8,14 @@ key prefix, I created this CLI tool to quickly fetch my latest cloudfront logs l
 
 
     AWS_PROFILE=myprofile AWS_REGION=us-east-2 ./s3-delta-download \
-        my-cloudfront-logs-bucket web/ET24I1N71LBO8.2025-03 /tmp/s3logs
-    Downloading: web/ET24I1N71LBO8.2025-03-17-21.b3ff36e3.gz
-    Downloading: web/ET24I1N71LBO8.2025-03-17-21.cf1a42c7.gz
-    Downloading: web/ET24I1N71LBO8.2025-03-17-22.05e8f2b2.gz
+        my-cloudfront-logs-bucket web/CF34I1N71LBO8.2025-03 /tmp/s3logs
+    Downloading: web/CF34I1N71LBO8.2025-03-17-21.b3ff36e3.gz
+    Downloading: web/CF34I1N71LBO8.2025-03-17-21.cf1a42c7.gz
+    Downloading: web/CF34I1N71LBO8.2025-03-17-22.05e8f2b2.gz
     ...
 
 The above command will fetch all keys in the bucket starting with
-web/ET24I1N71LBO8/2025-03, meaning all files >= March 2025.
+web/CF34I1N71LBO8/2025-03, meaning all files >= March 2025.
 
 The tool will only download files that don't exist in the local directory. In
 the above example, I already had files from March 1 to 16 downloaded, so they
