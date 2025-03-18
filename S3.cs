@@ -32,14 +32,15 @@ public class S3Util
     }
 
     public async Task DownloadFile(string key, string localDir) {
-        string tempPath = GetTempFile(localDir);
-        string finalPath = GetLocalFile(localDir, key);
+        string tempPath = GetTempFilePath(localDir);
+        string finalPath = GetLocalFilePath(localDir, key);
         if (File.Exists(finalPath)) {
             return;
         }
 
 
         Console.WriteLine("Downloading: " + key);
+        //Console.WriteLine("Temp File: " + tempPath);
 
         var request = new GetObjectRequest {
             BucketName = _bucketName,
@@ -54,11 +55,14 @@ public class S3Util
         File.Move(tempPath, finalPath, true);
     }
 
-    private static string GetTempFile(string localDir) {
-        return localDir + "/.s3-syncer.tmp";
+    private static string GetTempFilePath(string localDir) {
+        // Use a guid so multiple concurrent processes are safe
+        return localDir + "/.s3-syncer.tmp." + Guid.NewGuid().ToString();
     }
 
-    private static string GetLocalFile(string localDir, string key) {
+    private static string GetLocalFilePath(string localDir, string key) {
+        // TODO: If you want to replicate a directory structure in the localDir,
+        // this code will need to change
         string[] parts = key.Split("/");
         return localDir + "/" + parts.Last();
     }
