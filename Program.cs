@@ -5,7 +5,7 @@ Amazon.RuntimeDependencies.GlobalRuntimeDependencyRegistry.Instance.RegisterChec
 
 // Check arguments
 if (args.Count() != 3) {
-    Console.WriteLine("Usage: S3DeltaDownload <BUCKETNAME> <KEYPREFIX> <LOCALDIRECTORY>");
+    Console.WriteLine("Usage: s3-delta-download <BUCKETNAME> <KEYPREFIX> <LOCALDIRECTORY>");
     Environment.Exit(1);
 }
 
