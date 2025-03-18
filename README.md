@@ -26,7 +26,7 @@ existence check is safe, assuming the files in S3 are immutable.
 
 ## Installation
 
-1) This needs the .NET 8 SDK or later installed
+1) This needs the .NET 8 SDK (or later) to build
 2) If you want to compile to native code for fast startup, ensure you have the [native toolchain prerequistes](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/?tabs=windows%2Cnet8#prerequisites) installed
 3) If you don't want to compile to native code, remove the `<PublishAot>true</PublishAot>` from the .csproj file
 4) Run `dotnet publish` to compile a release build.
