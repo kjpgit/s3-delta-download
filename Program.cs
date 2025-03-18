@@ -12,5 +12,5 @@ if (args.Count() != 3) {
 var s3util = new S3Util(bucketName: args[0], keyPrefix: args[1]);
 await foreach (string key in s3util.ListBucketContentsAsync()) {
     //Console.WriteLine(key);
-    await s3util.DownloadFile(key, args[2]);
+    await s3util.DownloadFile(key: key, localDir: args[2]);
 }
