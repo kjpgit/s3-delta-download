@@ -12,6 +12,7 @@ public class S3Util
         _keyPrefix = keyPrefix;
     }
 
+    // Call The ListObjectsV2 API and iterate over each key string
     public async IAsyncEnumerable<string> ListBucketContentsAsync() {
         var request = new ListObjectsV2Request {
             BucketName = _bucketName,
@@ -31,13 +32,13 @@ public class S3Util
         } while (response.IsTruncated);
     }
 
+    // Download file if it doesn't already exist
     public async Task DownloadFile(string key, string localDir) {
         string tempPath = GetTempFilePath(localDir);
         string finalPath = GetLocalFilePath(localDir, key);
         if (File.Exists(finalPath)) {
             return;
         }
-
 
         Console.WriteLine("Downloading: " + key);
         //Console.WriteLine("Temp File: " + tempPath);
@@ -66,5 +67,4 @@ public class S3Util
         string[] parts = key.Split("/");
         return localDir + "/" + parts.Last();
     }
-
 }
