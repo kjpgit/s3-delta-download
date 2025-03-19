@@ -14,8 +14,8 @@ key prefix, I created this CLI tool to quickly fetch my latest cloudfront logs l
     Downloading: web/CF34I1N71LBO8.2025-03-17-22.05e8f2b2.gz
     ...
 
-The above command will fetch all keys in the bucket starting with
-web/CF34I1N71LBO8/2025-03, meaning all files >= March 2025.
+The above command will fetch all keys in the bucket with a prefix of
+`web/CF34I1N71LBO8/2025-03`, meaning all files in March 2025.
 
 The tool will only download files that don't exist in the local directory. In
 the above example, I already had files from March 1 to 16 downloaded, so they
