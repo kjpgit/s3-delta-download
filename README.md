@@ -31,3 +31,12 @@ existence check is safe, assuming the files in S3 are immutable.
 3) If you don't want to compile to native code, remove the `<PublishAot>true</PublishAot>` from the .csproj file
 4) Run `dotnet publish` to compile a release build.
 5) Run the binary from here or copy it: `./bin/Release/net8.0/linux-x64/publish/s3-delta-download`
+
+## Possible Enhancements
+
+* The [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
+`StartAfter` parameter could be used instead of a KeyPrefix.  Instead of only
+downloading logs in March 2025, this would download all logs >= March 2025.
+
+* Create a directory structure when downloading, instead of assuming all files
+  go directly into localDir.
