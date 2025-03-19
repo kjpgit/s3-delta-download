@@ -58,13 +58,13 @@ public class S3Util
 
     private static string GetTempFilePath(string localDir) {
         // Use a guid so multiple concurrent processes are safe
-        return localDir + "/.s3-syncer.tmp." + Guid.NewGuid().ToString();
+        return Path.Join(localDir,  ".s3-syncer.tmp." + Guid.NewGuid().ToString());
     }
 
     private static string GetLocalFilePath(string localDir, string key) {
         // TODO: If you want to replicate a directory structure in the localDir,
         // this code will need to change
         string[] parts = key.Split("/");
-        return localDir + "/" + parts.Last();
+        return Path.Join(localDir, parts.Last());
     }
 }
